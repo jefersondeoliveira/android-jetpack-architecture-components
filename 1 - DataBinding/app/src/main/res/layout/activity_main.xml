@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="contact" type="com.github.jefersondeoliveira.databinding.Contact"/>
+        <variable name="eventHandler" type="com.github.jefersondeoliveira.databinding.EventHandler"/>
+        <variable name="imageUrl" type="String"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+        <TextView
+                android:id="@+id/tvName"
+                android:text="@{contact.name, default=Teste}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivProfileImage" android:layout_marginStart="16dp"/>
+        <TextView
+                android:id="@+id/tvEmail"
+                android:text='@{contact.email,default="teste@email.com"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" android:layout_marginTop="8dp"/>
+        <Button
+                android:text="Click me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->eventHandler.onClickButton(contact.name)}"
+                android:id="@+id/btClick"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/etName" app:layout_constraintStart_toStartOf="@+id/etName"
+        />
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="@={contact.name, default=Teste}"
+                android:ems="10"
+                android:id="@+id/etName"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                app:layout_constraintStart_toStartOf="@+id/tvEmail"/>
+
+        <ImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"
+                app:profileImage="@{imageUrl}"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:srcCompat="@mipmap/ic_launcher"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
