@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav" app:startDestination="@id/navigation_home">
+
+    <fragment android:id="@+id/navigation_home"
+              android:name="com.github.jefersondeoliveira.navigation.HomeFragment"
+              android:label="Home"/>
+
+    <fragment android:id="@+id/navigation_screen2"
+              android:name="com.github.jefersondeoliveira.navigation.Fragment2"
+              android:label="Screen2"/>
+
+    <fragment android:id="@+id/navigation_screen3"
+              android:name="com.github.jefersondeoliveira.navigation.Fragment3"
+              android:label="Screen3">
+
+        <action android:id="@+id/next_action"
+                app:destination="@+id/navigation_screen4"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/navigation_screen4"
+              android:name="com.github.jefersondeoliveira.navigation.Fragment4"
+              android:label="Screen4">
+
+        <argument android:name="contNumber"
+                  app:argType="integer"
+                  android:defaultValue="0"/>
+    </fragment>
+</navigation>
