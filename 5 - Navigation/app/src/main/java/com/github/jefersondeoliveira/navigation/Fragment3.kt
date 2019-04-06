@@ -27,10 +27,15 @@ class Fragment3 : Fragment() {
             //Navigation.findNavController(it).navigate(R.id.next_action)
 
             //with acions and args
-            val nextAction: Fragment3Directions.NextAction = Fragment3Directions.nextAction()
-            nextAction.setContNumber(Random().nextInt(200))
+//            val nextAction: Fragment3Directions.NextAction = Fragment3Directions.nextAction()
+//            nextAction.setContNumber(Random().nextInt(200))
+//
+//            Navigation.findNavController(it).navigate(nextAction)
 
-            Navigation.findNavController(it).navigate(nextAction)
+            //or
+            Navigation.findNavController(it).navigate(Fragment3Directions.nextAction().run {
+                setContNumber(Random().nextInt(200))
+            })
 
         }
     }
